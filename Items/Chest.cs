@@ -2,6 +2,8 @@ public class Chest
 {
     public int Gold { get; set; }
     public List<Item> ChestLoot { get; set; } = new List<Item>();
+    
+    public Chest() { }
 
     public Chest(List<Item> items)
     {

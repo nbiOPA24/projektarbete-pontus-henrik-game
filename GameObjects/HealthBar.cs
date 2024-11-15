@@ -3,6 +3,7 @@ using System.Security.Cryptography.X509Certificates;
 public class HealthBar
 {
     static string[] healthBar = new string[10];
+    public HealthBar() { }
 
     private static void UpdateHealthBar(double percentHp)
     {

@@ -1,0 +1,54 @@
+{
+  "CurrentXp": 0,
+  "MaxXp": 100,
+  "Level": 1,
+  "Gold": 10,
+  "HealingPot": {
+    "Healing": 60,
+    "Ammount": 5,
+    "MaxAmmount": 5,
+    "ItemType": "Consumable",
+    "ItemName": "Healing Potion",
+    "Damage": 0,
+    "Health": 0,
+    "Resistance": 0,
+    "Agility": 0,
+    "Price": 20
+  },
+  "BonusAgility": 0,
+  "BonusHp": 0,
+  "BonusDamage": 0,
+  "BonusResistance": 0,
+  "TotalHp": 100,
+  "TotalDamage": 15,
+  "TotalAgility": 10,
+  "TotalResistance": 5,
+  "Inventory": {
+    "inventory": [
+      {
+        "ItemType": "Gloves",
+        "ItemName": "Pl\u00E5thandskar",
+        "Damage": 5,
+        "Health": 30,
+        "Resistance": 20,
+        "Agility": 5,
+        "Price": 120
+      }
+    ]
+  },
+  "EquippedGear": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "Name": "asdggg",
+  "Description": null,
+  "BaseHp": 100,
+  "CurrentHp": 80,
+  "BaseDamage": 15,
+  "BaseResistance": 5,
+  "BaseAgility": 10
+}

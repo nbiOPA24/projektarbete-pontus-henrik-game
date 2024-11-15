@@ -1,0 +1,44 @@
+{
+  "CurrentXp": 0,
+  "MaxXp": 100,
+  "Level": 1,
+  "Gold": 0,
+  "HealingPot": {
+    "Healing": 60,
+    "Ammount": 5,
+    "MaxAmmount": 5,
+    "ItemType": "Consumable",
+    "ItemName": "Healing Potion",
+    "Damage": 0,
+    "Health": 0,
+    "Resistance": 0,
+    "Agility": 0,
+    "Price": 20
+  },
+  "BonusAgility": 0,
+  "BonusHp": 0,
+  "BonusDamage": 0,
+  "BonusResistance": 0,
+  "TotalHp": 100,
+  "TotalDamage": 15,
+  "TotalAgility": 10,
+  "TotalResistance": 5,
+  "Inventory": {
+    "inventory": []
+  },
+  "EquippedGear": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "Name": "blalba",
+  "Description": null,
+  "BaseHp": 100,
+  "CurrentHp": 100,
+  "BaseDamage": 15,
+  "BaseResistance": 5,
+  "BaseAgility": 10
+}

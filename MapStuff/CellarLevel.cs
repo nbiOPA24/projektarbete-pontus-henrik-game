@@ -1,5 +1,6 @@
 public class CellarMap : Map
 {
+    public CellarMap() { }
     public CellarMap(char[,] map, char[,] cellarMap, Assassin assassin, List<Enemy> enemies, List<Chest> chests, Enemy boss, Merchant merchant)
     {
         Maplevel = map;
@@ -11,7 +12,7 @@ public class CellarMap : Map
         Assassin = assassin;
     }
 
-    public override void MovePlayer(Player player, Map map, int currentLevel, out int level)
+    public override void MovePlayer(Player player, Map map, List<Map> maps, int currentLevel, out int level)
     {
         level = currentLevel;
         int posX = 0;   //posX,posY är positionen som player har för tillfället
@@ -194,7 +195,7 @@ public class CellarMap : Map
             }
             #endregion
 
-               if (keyPressed.Key == ConsoleKey.H)
+            if (keyPressed.Key == ConsoleKey.H)
             {
                 
                 if(showHelp == false)
@@ -207,6 +208,12 @@ public class CellarMap : Map
                     PlayerUI.HelpText();
                     showHelp = false;
                 }
+            }
+
+            if (keyPressed.Key == ConsoleKey.Escape)
+            {
+                PauseMenu(player, maps);
+                return;
             }
             Console.SetCursorPosition(0, 27);
         }
@@ -410,6 +417,8 @@ public class CellarMap : Map
                 PlayerUI.UI(player);
             }
             #endregion
+
+            
         }
     }
 }

@@ -1,5 +1,6 @@
 public class DarkMap : Map
 {
+    public DarkMap() { }
     public DarkMap(char[,] map, List<Enemy> enemies, Assassin assassin, List<Chest> chests, Enemy boss, Merchant merchant)
     {
         Maplevel = map;
@@ -90,7 +91,7 @@ public class DarkMap : Map
         }
     }
     #endregion
-    public override void MovePlayer(Player player, Map map, int currentLevel, out int level)
+    public override void MovePlayer(Player player, Map map, List<Map> maps, int currentLevel, out int level)
     {
         level = currentLevel;
         int posX = 0;   //posX,posY är positionen som player har för tillfället
@@ -239,5 +240,11 @@ public class DarkMap : Map
                 showHelp = false;
             }
         }
-    }
+
+        if (keyPressed.Key == ConsoleKey.Escape)
+        {
+            PauseMenu(player, maps);
+            return;
+        }
+}
 }

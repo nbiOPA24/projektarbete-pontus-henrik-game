@@ -2,6 +2,8 @@ public class Inventory
 {
     public List<Item> inventory { get; set; } = new List<Item>();
 
+    public Inventory() { }
+
     public void InventoryUI(Player player) // NÄR VI TRYCKER C
     {
         while (true)    //Anropar en massa olika metoder för att ge oss en sammanställd inventoryUI 

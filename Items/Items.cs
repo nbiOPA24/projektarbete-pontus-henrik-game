@@ -15,6 +15,7 @@ public abstract class Item
 }
 public class Gear : Item
 {
+    public Gear() { }
     public Gear(string name, double damage, double health, double resistance, double agility)
     {
         ItemName = name;
@@ -51,6 +52,7 @@ public class Gear : Item
 //Olika typer av Gear/Equipment
 public class THelm : Gear
 {
+    public THelm() { }
     public THelm(string name, double damage, double health, double resistance, double agility)
     : base(name, damage, health, resistance, agility)
     {
@@ -59,14 +61,16 @@ public class THelm : Gear
 }
 public class TBreastPlate : Gear
 {
+    public TBreastPlate() { }
     public TBreastPlate(string name, double damage, double health, double resistance, double agility)
     : base(name, damage, health, resistance, agility)
     {
-        ItemType = "Breastplate";
+        ItemType = "Chest";
     }
 }
 public class TLegs : Gear
 {
+    public TLegs() { }
     public TLegs(string name, double damage, double health, double resistance, double agility)
     : base(name, damage, health, resistance, agility)
     {
@@ -75,6 +79,7 @@ public class TLegs : Gear
 }
 public class TBoots : Gear
 {
+    public TBoots() { }
     public TBoots(string name, double damage, double health, double resistance, double agility)
     : base(name, damage, health, resistance, agility)
     {
@@ -83,6 +88,7 @@ public class TBoots : Gear
 }
 public class TGloves : Gear
 {
+    public TGloves() { }
     public TGloves(string name, double damage, double health, double resistance, double agility)
     : base(name, damage, health, resistance, agility)
     {
@@ -91,6 +97,7 @@ public class TGloves : Gear
 }
 public class TWeapon : Gear
 {
+    public TWeapon() { }
     public string WeaponType { get; set; }
     public TWeapon(string name, string weaponType, double damage, double health, double resistance, double agility)
     : base(name, damage, health, resistance, agility)

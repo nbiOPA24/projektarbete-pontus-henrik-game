@@ -30,6 +30,43 @@ public abstract class Map
     internal static char OpenChest = '4';
     internal static char invisableAssassin = 'a';
 
+    public char[][] MaplevelJagged
+    {
+        get => ConvertToJaggedArray(Maplevel);
+        set => Maplevel = ConvertToMultidimensionalArray(value);
+    }
+
+    private static char[][] ConvertToJaggedArray(char[,] multiArray)
+    {
+        int rows = multiArray.GetLength(0);
+        int cols = multiArray.GetLength(1);
+        char[][] jaggedArray = new char[rows][];
+        for (int i = 0; i < rows; i++)
+        {
+            jaggedArray[i] = new char[cols];
+            for (int j = 0; j < cols; j++)
+            {
+                jaggedArray[i][j] = multiArray[i, j];
+            }
+        }
+        return jaggedArray;
+    }
+
+    private static char[,] ConvertToMultidimensionalArray(char[][] jaggedArray)
+    {
+        int rows = jaggedArray.Length;
+        int cols = jaggedArray[0].Length;
+        char[,] multiArray = new char[rows, cols];
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                multiArray[i, j] = jaggedArray[i][j];
+            }
+        }
+        return multiArray;
+    }
+
     #region ENEMY
     internal static void HandleEnemy(Player player, List<Enemy> enemies, char[,] gameMap, int newX, int newY) // När player går på enemy
     {
@@ -175,6 +212,79 @@ public abstract class Map
     }
     #endregion
 
+    public static void PauseMenu(Player player, List<Map> maps)
+    {
+        Console.Clear();
+        bool inMenu = true;
+        //Lägga till en likadan meny fast som även innehåller Continue och Save Game alternativ? och kanske Highscore?
+        while (inMenu)
+        {
+            // Lägga till funktion att välja med wasd eller upp och ner tangenterna?
+            Console.Clear();
+            Console.SetCursorPosition(40, 5);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("********** MAINMENU **********");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.SetCursorPosition(40, 6);
+            Console.Write("        1. ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Continue");
+            Console.SetCursorPosition(40, 7);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("        2. ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Save Game");
+            Console.SetCursorPosition(40, 8);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("        3. ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Load Game");
+            Console.SetCursorPosition(40, 9);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("        4. ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Quit Game");
+            Console.SetCursorPosition(40, 10);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("******************************");
+            Console.ResetColor();
+            //Player player = new Player("Player");
+            var choice = Console.ReadKey(true);
+            //if (choice.Key == ConsoleKey.Escape)
+            //string choice = Console.ReadLine();
+
+            switch (choice.Key)     //Lägga in pil med piltangent upp/ner?
+            {
+                case ConsoleKey.Escape:
+                    return;
+
+                case ConsoleKey.D1:
+                    return;
+
+                case ConsoleKey.D2: // GREJER FÖR ATT LADDA, JSON
+                    Json.Save(player, maps);
+                    break;
+
+                case ConsoleKey.D3:
+                    //Player player = new Player("Player");
+                    // Json.Load(player.Name, out Player loadedplayer, out List<Map> loadedmaps);
+                    // player = loadedplayer;
+                    // maps = loadedmaps;
+                    break;
+
+                case ConsoleKey.D4:
+                    Console.WriteLine("quitting...");
+                    inMenu = false;
+                    Environment.Exit(0);
+                    break;
+
+                default:
+                    Console.WriteLine("Thats not a choice!");
+                    break;
+            }
+        }
+    }
+
     internal static void MapInfo() //Skriver ut info ovanför mappen
     {
         Console.WriteLine();
@@ -189,7 +299,7 @@ public abstract class Map
         Console.WriteLine();
     }
 
-    public virtual void MovePlayer(Player player, Map map, int currentLevel, out int level)
+    public virtual void MovePlayer(Player player, Map map, List<Map> maps, int currentLevel, out int level)
     {
         level = currentLevel;
         
@@ -381,6 +491,12 @@ public abstract class Map
                     showHelp = false;
                 }
             }
+
+            if (keyPressed.Key == ConsoleKey.Escape)
+            {
+                PauseMenu(player, maps);
+                return;
+            }
             Console.SetCursorPosition(0, 27);
         }
     }
@@ -452,6 +568,7 @@ public abstract class Map
 
 public class RegularMap : Map
 {
+    public RegularMap() { }
     public RegularMap(char[,] map, List<Enemy> enemies, Assassin assassin, List<Chest> chests, Enemy boss, Merchant merchant)
     {
         Maplevel = map;

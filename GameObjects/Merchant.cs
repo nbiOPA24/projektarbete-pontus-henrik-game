@@ -4,6 +4,7 @@ public class Merchant
     public int Gold { get; set; }
     public Inventory MerchantInventory { get; set; }
 
+    public Merchant() { }
     public Merchant(string name, int gold, List<Item> items)
     {
         Name = name;

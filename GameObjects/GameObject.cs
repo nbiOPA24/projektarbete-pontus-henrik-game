@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 public class GameObject
 {
     public bool isPlayer;
@@ -28,6 +29,7 @@ public class GameObject
             }
         } 
     }   
+    [JsonIgnore]
     public double PercentHp
     {
         get { return CurrentHp / TotalHp * 100; }

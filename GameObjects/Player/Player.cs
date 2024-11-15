@@ -1,7 +1,15 @@
 using System.ComponentModel;
 using System.Formats.Asn1;
 using System.Runtime.InteropServices;
-
+using System.Security;
+// public class EquippedItems
+// {
+//     public Item[] Items { get; set; }
+//     public EquippedItems()
+//     {
+//         Items = new Item[6];
+//     }
+// }
 public class Player : GameObject
 {
     public bool isPlayer = true;
@@ -35,7 +43,7 @@ public class Player : GameObject
 
     public Inventory Inventory { get; set; }
 
-    public Item[] EquippedGear { get; set; } = new Item[6];
+    public Item[] EquippedGear { get; set; }// = new Item[6];
 
     public Player(string name)
     {
@@ -53,7 +61,9 @@ public class Player : GameObject
         HealingPot = new Consumable();
         Inventory = new Inventory();
         healthBar = new HealthBar();
+        EquippedGear = new Item[6];
     }
+    public Player() { }
 
     #region HP
     public void ShowHp()    //Skriver ut en HealthBar och hp i text under

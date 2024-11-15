@@ -87,7 +87,7 @@ public static class Combat
         player.ShowHp();
 
         Clear.Damage();
-
+        
         Console.SetCursorPosition(20, 6);
         PrintColor.Red($"{attackMessageEnemy}", "WriteLine");
         Console.SetCursorPosition(20, 7);
